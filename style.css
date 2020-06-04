@@ -1,20 +1,8 @@
-/* 
-*{
-    font-family: sans-serif;
-    font-weight: normal;
-    font-size: 1.1em;
+body,
+h1,
+h2,
+h3,
+h4,
+h5, p, span, pre, div, a {
+    font-family: "Noto", sans-serif
 }
-td{
-    background-color: #ccc;
-    padding: 10px 30px 10px 30px;
-    border-radius: 0.2em;
-    text-align: center;
-    cursor: default;
-}
-#result{
-    border-color: #000;
-    border-width: 1px;
-    border-style: solid;
-    padding: 10px 30px 10px 30px;
-    text-align: right;
-} */
