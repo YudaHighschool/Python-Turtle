@@ -1,3 +1,5 @@
+import math
+import myTurtle
 from browser import document, html
 
 # 設定 Python 執行結果的容器　
@@ -7,17 +9,19 @@ for c in "w3-container w3-half w3-margin-top".split(' '):  # 設定基本版型
 
 
 # 小烏龜繪圖模組
-import myTurtle
-container <= html.DIV(html.H2('小烏龜繪圖模組'), Class="w3-container w3-blue  w3-margin-top")
+container <= html.DIV(html.H2('小烏龜繪圖模組'),
+                      Class="w3-container w3-blue  w3-margin-top")
 turtleDiv = html.DIV(Class="w3-border")
 myTurtle.drawTurtle(turtleDiv)
 container <= turtleDiv
 
 
 # 寶貝圖鑑列表
-container <= html.DIV(html.H2('寶貝圖鑑列表'), Class="w3-container w3-blue  w3-margin-top")
+container <= html.DIV(
+    html.H2('寶貝圖鑑列表'), Class="w3-container w3-blue  w3-margin-top")
 table = html.TABLE(Class="w3-table-all")
-table <= html.TR(html.TH('序號') + html.TH('中文名') + html.TH('最大CP') + html.TH('屬性'))
+table <= html.TR(html.TH('序號') + html.TH('中文名') +
+                 html.TH('最大CP') + html.TH('屬性'))
 lines = [
     [1, '妙蛙種子', '1115', '草、毒'],
     [2, '妙蛙草', '1699', '草、毒'],
@@ -25,11 +29,13 @@ lines = [
     [4, '小火龍', '980', '火'],
 ]
 for line in lines:
-    table <= html.TR(html.TD(line[0]) + html.TD(line[1]) + html.TD(line[2]) + html.TD(line[3]))
+    table <= html.TR(
+        html.TD(line[0]) + html.TD(line[1]) + html.TD(line[2]) + html.TD(line[3]))
 container <= table
 
 # 寶貝圖鑑輸入表
-container <= html.DIV(html.H2('寶貝圖鑑輸入表'), Class="w3-container w3-blue  w3-margin-top")
+container <= html.DIV(html.H2('寶貝圖鑑輸入表'),
+                      Class="w3-container w3-blue  w3-margin-top")
 form = html.FORM(Class="w3-container w3-border")
 form <= html.DIV(
     html.LABEL('中文名') +
@@ -48,16 +54,24 @@ container <= form
 
 # 畫布　Html Canvas
 container <= html.DIV(html.H2('Html Canvas'),
-                 Class="w3-container w3-blue  w3-margin-top")
-canvas=html.CANVAS(width=300, height=300)
-canvas.style={"width": "100%"}
-ctx=canvas.getContext('2d')
-ctx.rect(0, 0, 300, 300)
-grd=ctx.createRadialGradient(150, 150, 10, 150, 150, 150)
-grd.addColorStop(0, '#8ED6FF')
-grd.addColorStop(1, '#004CB3')
-ctx.fillStyle=grd
-ctx.fill()
-container <= canvas
+                      Class="w3-container w3-blue  w3-margin-top")
+canvas = html.CANVAS(width=300, height=100)
+canvas.style = {"width": "100%"}
+ctx = canvas.getContext("2d")
+x = 20
 
 
+def draw(event):
+    global x
+    ctx.beginPath()
+    ctx.arc(x, 25, 15, 0, 2 * math.pi)
+    x += 15
+    ctx.stroke()
+
+
+drawButton = html.BUTTON("畫圈", Class="w3-button w3-red").bind("click", draw)
+controls = html.DIV(drawButton)
+container <= html.DIV(
+    html.DIV(canvas, Class="w3-border w3-margin-bottom") +
+    controls,
+    Class="w3-container w3-border w3-padding")
