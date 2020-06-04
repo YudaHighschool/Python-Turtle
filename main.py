@@ -1,5 +1,4 @@
 import math
-import myTurtle
 from browser import document, html
 
 # 設定 Python 執行結果的容器　
@@ -8,11 +7,49 @@ for c in "w3-container w3-half w3-margin-top".split(' '):  # 設定基本版型
     container.classList.add(c)
 
 
-# 小烏龜繪圖模組
-container <= html.DIV(html.H2('小烏龜繪圖模組'),
+# 小海龜繪圖模組
+import turtle
+import myTurtle
+container <= html.DIV(html.H2('小海龜繪圖模組'),
                       Class="w3-container w3-blue  w3-margin-top")
 turtleDiv = html.DIV(Class="w3-border")
-myTurtle.drawTurtle(turtleDiv)
+turtle.set_defaults(
+    turtle_canvas_wrapper=turtleDiv
+)
+screen = turtle.Screen()
+# screen.setup(40, 40)
+
+turtle.tracer(1)  # Turns off screen updates
+
+grid = turtle.Turtle()
+grid.penup()
+grid.width(1)
+grid.color('lightgrey')
+grid.speed(0)
+STEP = 30
+OFFSET = 15
+LENGTH = 300
+grid.home()
+for i in range(0, LENGTH+STEP, STEP):
+    grid.penup()
+    # go to start hoz line possition
+    grid.setpos(-LENGTH/2 - OFFSET, (LENGTH/2 - i) - OFFSET)
+    grid.pendown()
+    grid.setpos(LENGTH/2 - OFFSET,
+                (LENGTH/2 - i) - OFFSET)  # draw horizontal line
+
+    grid.penup()
+    # go to start vertical line possition
+    grid.setpos((-LENGTH/2 + i) - OFFSET, LENGTH/2 - OFFSET)
+    grid.pendown()
+    grid.setpos((-LENGTH / 2 + i) - OFFSET, -LENGTH / 2 - OFFSET)
+grid.penup()
+turtle.update()
+# turtle.exitonclick()
+t = turtle.Turtle()
+t.shape("turtle")
+t.pendown()
+myTurtle.drawTurtle()
 container <= turtleDiv
 
 
