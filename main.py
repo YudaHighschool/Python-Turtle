@@ -1,6 +1,5 @@
 import turtle
-from browser import document
-from browser import html
+from browser import document, html
 from browser.html import TABLE, TR, TH, TD, DIV, BR, H1, H2, H3, LABEL
 
 # All the elements will be inserted in the div with the "container" id
