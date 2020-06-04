@@ -3,15 +3,34 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 用 brython 於 web app 中執行 python 程式 -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython_stdlib.js"></script>
-    
+
+    <!-- w3css library, see https://www.w3schools.com/w3css/default.asp-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC+Raleway">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Noto", "Raleway", sans-serif
+        }
+    </style>
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-amber.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body onload="brython()">
     <script type="text/python" src="main.py"></script>
+
+    <div id="turtle-div turtle1" style="float:left;border:1px solid green; margin-left:50px;"> </div>
+    <div id="python"></div>
 </body>
 
 </html>
