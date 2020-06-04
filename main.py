@@ -16,7 +16,10 @@ turtle.set_defaults(
 t = turtle.Turtle()
 
 t.width(5)
-for c in ['red', '#00ff00', '#fa0', 'rgb(0,0,200)']:
+t.color('red')
+t.forward(100)
+t.left(90)
+for c in [ '#00ff00', '#fa0', 'rgb(0,0,200)']:
     t.color(c)
     t.forward(100)
     t.left(90)
